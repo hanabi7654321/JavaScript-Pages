@@ -2,7 +2,7 @@
 
 
 // 質問と答えを配列で格納
-let quiz = [
+const quiz = [
   {
     question: "連想配列を英語で何といいますか？",
     answer: "associative array"
@@ -18,7 +18,7 @@ let quiz = [
 ];
 
 
-document.getElementById("btn").onclick = function() {
+document.getElementById("quiz-1").onclick = function() {
   // クイズを繰り返し表示
   let count = 0;  // クイズの正解数
   for (let i = 0; i < quiz.length; i++) {
@@ -31,6 +31,7 @@ document.getElementById("btn").onclick = function() {
     }
   }
   document.write(quiz.length + "問中、" + count + "問正解でした！");
+  document.write("<a href='http://localhost:8000/index.html'>もどる</a>");
 }
 
 

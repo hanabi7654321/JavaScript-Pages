@@ -1,0 +1,19 @@
+body {
+  font-family: 'Orbitron', sans-serif, "M PLUS Rounded 1c";
+}
+
+
+
+.wf-roundedmplus1c { font-family: "M PLUS Rounded 1c"; }
+
+
+.anime {
+  width: 200;
+  height: 200;
+}
+
+#js-items > button.correct {
+  transition: all 0.4s ease-in-out;
+  background: #06d6a0;
+
+}
