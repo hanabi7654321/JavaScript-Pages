@@ -33,6 +33,16 @@ body {
   color: #8e9aaf;
 }
 
+#next-btn {
+  background: #ffe066;
+  color:#2f4550;
+  border: 0 none;
+  padding: 8px 14px;
+  margin: 5px auto; 
+  align-content: center;
+  border-radius: 4px;
+}
+
 
 .footer {
   color: #bfc0c0;
