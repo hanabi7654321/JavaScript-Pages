@@ -32,15 +32,19 @@ const quiz = [
 
 const $question = document.getElementById('js-quiz');
 const $buttons = document.querySelectorAll('.btn');
+const $count = document.getElementById('quiz-count')
 
 const quizLen = quiz.length;　// クイズの数
 let quizCount = 0;　//　何番目のクイズか
 let score = 0;
+let isAnswered;
 
 
 // 初期化
 const init = () => {
   
+  isAnswered = false;
+  $count.textContent = '第' + (quizCount + 1) + '問目';
   // 問題文をHTMLに反映させる
   $question.textContent = quiz[quizCount].question;
   
@@ -54,23 +58,37 @@ const init = () => {
 };
 
 
-// ボタンをクリックしたら正誤判定
-const judge = (elm) => {
-  if ( elm.textContent === quiz[quizCount].correct) {
-    elm.classList.add('correct');
-    // window.alert('正解！');
-    score++;
-  } else {
-    elm.classList.add('wrong');
-    // window.alert('ざんねん！');
-  }
+
   
-};
+ // ボタンをクリックしたら正誤判定
+const judge = (elm) => {
+  if (isAnswered) {
+    return;
+  } 
+  isAnswered = true;
+  if ( elm.textContent === quiz[quizCount].correct) {
+    elm.classList.add('correct'); // 正解クラスadd
+    setTimeout(() => {
+      elm.classList.remove('correct');// 正解クラスremove
+    }, 2500);
+    score++;    
+  } else {
+    elm.classList.add('wrong');　// 不正解クラスadd
+    setTimeout(() => {
+      elm.classList.remove('wrong'); // 不正解クラスremove
+    }, 2500);
+  }
+  setTimeout(goToNext,2500);  
+};  
+
+
+
 
 
 // 次の問題へ
 const goToNext = () => {
   quizCount++;
+  
   if (quizCount < quizLen) {
     init(quizCount);
   } else {
@@ -80,8 +98,9 @@ const goToNext = () => {
 
 // 最後の問題が終わったら
 const showEnd = () => {
-  const result = Math.round((score/quizLen)*100);
-  $question.textContent = `終了！　あなたの正解率は${result}%です`;
+  const result = Math.round((score/quizLen)*100); // 正解率
+  $count.textContent = 'お疲れさまでした！'
+  $question.textContent = `あなたの正解率は${result}%です`;
 
   const $items = document.getElementById('js-items');
   $items.style.visibility = 'hidden';

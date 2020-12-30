@@ -13,7 +13,27 @@ body {
 }
 
 #js-items > button.correct {
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background: #06d6a0;
+}
 
+#js-items > button.correct::after {
+  content: '...正解！';
+  color: #ffbe0b;
+  font-size: 20px;
+}
+
+#js-items > button.wrong {
+  transition: all 0.3s ease-in-out;
+  background: #d6d6d6;
+}
+
+#js-items > button.wrong::after {
+  content: '...ざんねん！';
+  color: #8e9aaf;
+}
+
+
+.footer {
+  color: #bfc0c0;
 }
